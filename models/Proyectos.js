@@ -10,7 +10,7 @@ const Proyectos = db.define('proyectos', { // Crea tabla proyectos
         primaryKey: true,
         autoIncrement: true
     },
-    nombre: Sequelize.STRING, //type va implicito con el valor del atributo
+    nombre: Sequelize.STRING(100), //type va implicito con el valor del atributo
     url: Sequelize.STRING
 }, {
     hooks: { // Hook -> sirve para crear acciones antes o despues de cualquier accion CRUD

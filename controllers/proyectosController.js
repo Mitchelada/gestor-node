@@ -1,5 +1,7 @@
 const Proyecto = require('../models/Proyectos')
+const Tarea = require('../models/Tareas')
 const slug = require('slug')
+
 
 exports.proyectosHome = async(req, res) => {
     const proyectos = await Proyecto.findAll();
@@ -61,13 +63,26 @@ exports.proyectoPorUrl = async(req, res, next) => {
 
     const [proyectos, proyecto] = await Promise.all([proyectosPromise, proyectoPromise])
 
+    // Consultar tareas del proyecto actual
+
+    const tareas = await Tarea.findAll({
+        where: {
+            proyectoId: proyecto.id
+        },
+        // include: [ // -> trae el modelo del que es parte por clave foranea
+        //     { model: Proyecto }
+        // ]
+    })
+
+    console.log(tareas);
     if (!proyecto) return next();
 
     //render a la vista
     res.render('tareas', {
         nombrePagina: 'Tareas del Proyecto',
         proyecto,
-        proyectos
+        proyectos,
+        tareas
     })
 }
 
