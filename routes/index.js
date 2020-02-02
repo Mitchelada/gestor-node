@@ -44,6 +44,7 @@ router.delete('/tareas/:id', authController.usuarioAutenticado, tareasController
 
 router.get('/crear-cuenta', usuarioController.formCrearCuenta)
 router.post('/crear-cuenta', usuarioController.crearCuenta)
+router.get('/confirmar/:correo', usuarioController.confirmarCuenta)
 
 //Iniciar sesion
 router.get('/iniciar-sesion', usuarioController.formIniciarSesion)
@@ -51,6 +52,13 @@ router.post('/iniciar-sesion', authController.autenticarUsuario)
 
 //Cerrar sesion
 router.get('/cerrar-sesion', authController.cerrarSesion)
+
+//Restablecer contraseña
+router.get('/restablecer', usuarioController.fromRestablecerPassword)
+router.post('/restablecer', authController.enviarToken)
+router.get('/restablecer/:token', authController.validarToken)
+router.post('/restablecer/:token', authController.actualizarPassword)
+
 
 module.exports = {
     router

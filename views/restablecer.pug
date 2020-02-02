@@ -4,8 +4,9 @@ html(lang="en")
         include partials/header
     body.login
         .contenedor-formulario
-            h1 Iniciar Sesion
-            
+            h1= nombrePagina
+            p Agrega tu e-mail para restablecer la contraseña
+
             if locals.mensajes
                 .alertas
                     each categoria in Object.keys(locals.mensajes)
@@ -13,15 +14,11 @@ html(lang="en")
                             .alerta.error(class=`${categoria}`)
                                 p= error
                                 
-            form#formulario.caja.caja-login(method="POST" action="/iniciar-sesion")
+            form.caja-login(method="POST" action="/restablecer")
                 .campo
                     labe(for="email") E-mail:
                     input(type="text" name="email" placeholder="Tu Email" value=email)
-                .campo
-                    labe(for="password") Password:
-                    input(type="password" name="password" placeholder="Tu password" value=password )
                 .campo.enviar
-                    input.boton(type="submit" value="Iniciar sesion")
+                    input.boton(type="submit" value="Restablecer password")
                 .campo.acciones
-                    a(href="/crear-cuenta") ¿Aun no tienes cuenta? Crea una gratis
-                    a(href="/restablecer") ¿Olvidaste tu contraseña
+                    a(href="/iniciar-sesion") Ya lo recorde, volver al login
