@@ -1,0 +1,39 @@
+const Usuario = require('../models/Usuarios')
+
+exports.formCrearCuenta = (req, res) => {
+    res.render('crearCuenta', {
+        nombrePagina: 'Crear Cuenta'
+    })
+}
+
+exports.formIniciarSesion = (req, res) => {
+    const { error } = res.locals.mensajes
+    res.render('iniciarSesion', {
+        nombrePagina: 'Iniciar Sesion',
+        error
+    })
+}
+
+
+exports.crearCuenta = async(req, res) => {
+    // leer los datos
+    const { email, password } = req.body;
+
+    try {
+        // crear el usuario
+        await Usuario.create({
+            email,
+            password
+        })
+        res.redirect('/iniciar-sesion')
+
+    } catch (error) {
+        req.flash('error', error.errors.map(error => error.message));
+        res.render('crearCuenta', {
+            errores: req.flash(),
+            nombrePagina: 'Crear Cuenta',
+            email,
+            password
+        })
+    }
+}

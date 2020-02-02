@@ -112,6 +112,7 @@ body {
 .boton:hover {
     cursor: pointer;
     background-color: rgb(219, 184, 29)!important;
+    border-radius: 30px;
 }
 
 .boton.eliminar {
@@ -188,6 +189,7 @@ body.index {
 
 .crear-proyecto a {
     color: #455A64;
+    border-radius: 30px;
 }
 
 .lista-proyectos ul {
@@ -244,6 +246,7 @@ body.index {
     padding: 2rem;
     color: white;
     transition: background-color .5s ease-in-out;
+    border-radius: 30px;
 }
 
 
@@ -256,6 +259,7 @@ body.index {
     margin: 2rem auto 0 auto;
     padding: 2rem;
     border: 1px solid #999;
+    border-radius: 30px;
 }
 
 .listado-pendientes ul {
@@ -347,6 +351,7 @@ form.agregar-proyecto {
     padding: 2rem;
     color: white;
     transition: background-color .5s ease-in-out;
+    border-radius: 30px;
 }
 
 form.agregar-proyecto label,
@@ -377,6 +382,7 @@ form input[type="submit"] {
     color: black;
     width: auto;
     margin: 0;
+    border-radius: 30px;
 }
 
 .contenedor-acciones {
@@ -400,4 +406,5 @@ form input[type="submit"] {
     margin: 0;
     text-align: center;
     display: block;
+    border-radius: 30px;
 }
